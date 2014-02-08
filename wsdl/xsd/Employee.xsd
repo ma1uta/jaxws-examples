@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://types.service.orgsynch.documentum.croc.com" elementFormDefault="unqualified" attributeFormDefault="unqualified">
+	<xsd:element name="Employee_DCTM_Request_MT">
+		<xsd:annotation>
+			<xsd:documentation>Сообщение с информацией по одному сотруднику</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:annotation>
+				<xsd:documentation xml:lang="RU">
+               Справочник персонала
+               </xsd:documentation>
+			</xsd:annotation>
+			<xsd:sequence>
+				<xsd:element name="row">
+					<xsd:annotation>
+						<xsd:documentation>Информация по сотруднику</xsd:documentation>
+					</xsd:annotation>
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="Login">
+								<xsd:annotation>
+									<xsd:documentation>Логин сотрудника из Active Directory</xsd:documentation>
+								</xsd:annotation>
+								<xsd:simpleType>
+									<xsd:restriction base="xsd:string">
+										<xsd:maxLength value="80"/>
+									</xsd:restriction>
+								</xsd:simpleType>
+							</xsd:element>
+							<xsd:element name="Domain">
+								<xsd:annotation>
+									<xsd:documentation>Домен сотрудника из Active Directory</xsd:documentation>
+								</xsd:annotation>
+								<xsd:simpleType>
+									<xsd:restriction base="xsd:string">
+										<xsd:maxLength value="256"/>
+									</xsd:restriction>
+								</xsd:simpleType>
+							</xsd:element>
+							<xsd:element name="MDMID">
+								<xsd:annotation>
+									<xsd:documentation>Идентификационный код в системе MDM</xsd:documentation>
+								</xsd:annotation>
+								<xsd:simpleType>
+									<xsd:restriction base="xsd:string">
+										<xsd:maxLength value="32"/>
+									</xsd:restriction>
+								</xsd:simpleType>
+							</xsd:element>
+							<xsd:element name="FKEY" type="xsd:string" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>Koд в локальной системе.
+В АСУТД не обрабатывается.</xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="ISDELETED" type="xsd:boolean">
+								<xsd:annotation>
+									<xsd:documentation>Признак удаления записи.
+Статус записи.
+0 - активен;
+1 - Помечено к удалению.</xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="KontL_MDM" type="xsd:string" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>ID руководителя для секретарей, помощников, советников.
+АСУТД не обрабатывается      </xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="KontL" type="xsd:string" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>ID руководителя для секретарей, помощников, советников.
+АСУТД не обрабатывается      </xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="Ruk" type="xsd:string" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>FKEY руководителя данного сотрудника.
+АСУТД не обрабатывается</xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="TabelNumber" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>Табельный номер     </xsd:documentation>
+								</xsd:annotation>
+								<xsd:simpleType>
+									<xsd:restriction base="xsd:string">
+										<xsd:maxLength value="32"/>
+									</xsd:restriction>
+								</xsd:simpleType>
+							</xsd:element>
+							<xsd:element name="AdditionalNumber" type="xsd:string" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>Дополнительный номер.
+В АСУТД не обрабатывается.</xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="LastName">
+								<xsd:annotation>
+									<xsd:documentation>Фамилия                 </xsd:documentation>
+								</xsd:annotation>
+								<xsd:simpleType>
+									<xsd:restriction base="xsd:string">
+										<xsd:maxLength value="256"/>
+									</xsd:restriction>
+								</xsd:simpleType>
+							</xsd:element>
+							<xsd:element name="FirstName">
+								<xsd:annotation>
+									<xsd:documentation>Имя</xsd:documentation>
+								</xsd:annotation>
+								<xsd:simpleType>
+									<xsd:restriction base="xsd:string">
+										<xsd:maxLength value="256"/>
+									</xsd:restriction>
+								</xsd:simpleType>
+							</xsd:element>
+							<xsd:element name="MiddleName">
+								<xsd:annotation>
+									<xsd:documentation>Отчество               </xsd:documentation>
+								</xsd:annotation>
+								<xsd:simpleType>
+									<xsd:restriction base="xsd:string">
+										<xsd:maxLength value="256"/>
+									</xsd:restriction>
+								</xsd:simpleType>
+							</xsd:element>
+							<xsd:element name="DateBorn" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>Дата рождения.
+В АСУТД не обрабатывается.       </xsd:documentation>
+								</xsd:annotation>
+								<xsd:simpleType>
+									<xsd:restriction base="xsd:string">
+										<xsd:pattern value="[0-9][0-9]/[0-9][0-9]/[0-9][0-9][0-9][0-9]"/>
+										<xsd:pattern value="[0-9][0-9]:[0-9][0-9]:[0-9][0-9]"/>
+										<xsd:pattern value="GMT"/>
+									</xsd:restriction>
+								</xsd:simpleType>
+							</xsd:element>
+							<xsd:element name="Address" type="xsd:string" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>Адрес.
+В АСУТД не обрабатывается</xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="OrgId_MDM" type="xsd:string" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>Идентификатор MDM организационной единицы/
+В АСУТД не обрабатывается</xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="OrgId" type="xsd:string">
+								<xsd:annotation>
+									<xsd:documentation>Идентификатор MDM организационной единицы</xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="OrgNameFull" type="xsd:string" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>Полное нименование организации для Документума.
+АСУТД не обрабатывается      </xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="OrgIdFunk_MDM" type="xsd:string" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>Идентификатор  MDM  функциональной организационной единицы.
+АСУТД не обрабатывается      </xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="OrgIdFunk" type="xsd:string" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>Идентификатор  MDM  функциональной организационной единицы.
+АСУТД не обрабатывается      </xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="Dolg" type="xsd:string">
+								<xsd:annotation>
+									<xsd:documentation>Название должности</xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="ModificatorDolg" type="xsd:string" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>Модификатор должности.
+АСУТД не обрабатывается      </xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="DolgFunk" type="xsd:string" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>Название фунциональной должности.
+АСУТД не обрабатывается              </xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="ModificatorDolgFunc" type="xsd:string" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>Модификатор фунциональной должности.
+АСУТД не обрабатывается</xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="Address1_MDM" type="xsd:string" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>FKEY из справочника мест расположения.
+АСУТД не обрабатывается</xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="Address1" type="xsd:string" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>FKEY из справочника мест расположения.
+АСУТД не обрабатывается</xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="Office1" type="xsd:string" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>Номер комнаты.
+АСУТД не обрабатывается</xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="Address2_MDM" type="xsd:string" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>FKEY из справочника мест расположения.
+АСУТД не обрабатывается</xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="Address2" type="xsd:string" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>FKEY из справочника мест расположения.
+АСУТД не обрабатывается      </xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="Office2" type="xsd:string" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>Номер комнаты.
+АСУТД не обрабатывается</xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="Address3_MDM" type="xsd:string" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>FKEY из справочника мест расположения.
+АСУТД не обрабатывается</xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="Address3" type="xsd:string" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>FKEY из справочника мест расположения.
+АСУТД не обрабатывается</xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="Office3" type="xsd:string" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>Номер комнаты.
+АСУТД не обрабатывается</xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="PhoneOrg1" type="xsd:string" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>Телефон рабочий 1
+                              </xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="PhoneOrg2" type="xsd:string" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>Телефон рабочий 2.
+АСУТД не обрабатывается</xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="PhoneOrg3" type="xsd:string" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>Телефон рабочий 3.
+АСУТД не обрабатывается</xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="PhoneHome1" type="xsd:string" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>Телефон домашний 1.
+АСУТД не обрабатывается      </xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="PhoneHome2" type="xsd:string" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>Телефон домашний 2.
+АСУТД не обрабатывается      </xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="PhoneHome3" type="xsd:string" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>Телефон домашний 3.
+АСУТД не обрабатывается      </xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="PhoneMobile1" type="xsd:string" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>Телефон мобильный 1.
+АСУТД не обрабатывается      </xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="PhoneMobile2" type="xsd:string" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>Телефон мобильный 2.
+АСУТД не обрабатывается      </xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="PhoneMobile3" type="xsd:string" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>Телефон мобильный 3.
+АСУТД не обрабатывается      </xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="Fax1" type="xsd:string" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>Факс1.
+АСУТД не обрабатывается      </xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="Fax2" type="xsd:string" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>Факс2.
+АСУТД не обрабатывается      </xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="Fax3" type="xsd:string" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>Факс3.
+АСУТД не обрабатывается      </xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="PhoneInt1" type="xsd:string" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>Внутренний телефон 1.
+АСУТД не обрабатывается      </xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="PhoneInt2" type="xsd:string" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>Внутренний телефон 2.
+АСУТД не обрабатывается      </xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="PhoneInt3" type="xsd:string" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>Внутренний телефон 3.
+АСУТД не обрабатывается      </xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="EMail" type="xsd:string" minOccurs="1">
+								<xsd:annotation>
+									<xsd:documentation>E-mail    </xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="Activity" type="xsd:string" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>Направление детельности.
+АСУТД не обрабатывается.     </xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="JobFunkPriority" type="xsd:string" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>Приоритет функциональной должности.
+АСУТД не обрабатывается             </xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="JobPrioirity" type="xsd:string" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>Приоритет должности.
+АСУТД не обрабатывается      </xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

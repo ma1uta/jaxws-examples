@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions
+        xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+        xmlns:tns="http://service.orgsynch.documentum.croc.com/OrgsynchService/"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+        xmlns:xsd1="http://types.service.orgsynch.documentum.croc.com"
+        name="OrgsynchService"
+        targetNamespace="http://service.orgsynch.documentum.croc.com/OrgsynchService/">
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                    targetNamespace="http://service.orgsynch.documentum.wsdl.com/OrgsynchService/">
+            <xsd:element name="UpdateEmployee">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="in" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="UpdateDepartment">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="in" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://types.service.orgsynch.documentum.croc.com" schemaLocation="xsd/Employee.xsd">
+            </xsd:import>
+            <xsd:import namespace="http://types.service.orgsynch.documentum.croc.com"
+                        schemaLocation="xsd/Orgstructure.xsd">
+            </xsd:import>
+        </xsd:schema>
+    </wsdl:types>
+
+
+    <wsdl:message name="UpdateEmployeeRequest">
+        <wsdl:part name="parameters" element="xsd1:Employee_DCTM_Request_MT"/>
+    </wsdl:message>
+
+    <wsdl:message name="UpdateDepartmentRequest">
+        <wsdl:part name="parameters" element="xsd1:OrgStructure_Request_MT"/>
+    </wsdl:message>
+
+    <wsdl:portType name="OrgsynchPortType">
+        <wsdl:operation name="UpdateEmployee">
+            <wsdl:input message="tns:UpdateEmployeeRequest"/>
+        </wsdl:operation>
+        <wsdl:operation name="UpdateDepartment">
+            <wsdl:input message="tns:UpdateDepartmentRequest"/>
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name="OrgsynchBinding" type="tns:OrgsynchPortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+        <wsdl:operation name="UpdateEmployee">
+            <soap:operation soapAction="urn:UpdateEmployee" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+
+        <wsdl:operation name="UpdateDepartment">
+            <soap:operation soapAction="urn:UpdateDepartment" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <wsdl:service name="OrgsynchService">
+        <wsdl:port name="HTTP_Port" binding="tns:OrgsynchBinding">
+            <soap:address location="http://service.orgsynch.documentum.wsdl.com/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

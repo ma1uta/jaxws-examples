@@ -1,0 +1,822 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project activeEnvironment="Default" name="OrgsynchService" resourceRoot="${projectDir}" soapui-version="4.6.4" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="OrgsynchBinding" type="wsdl" bindingName="{http://service.orgsynch.documentum.croc.com/OrgsynchService/}OrgsynchBinding" soapVersion="1_1" anonymous="optional" definition="OrgsynchService.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:/home/tolya/dev/jaxws/wsdl/OrgsynchService.wsdl"><con:part><con:url>file:/home/tolya/dev/jaxws/wsdl/OrgsynchService.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="OrgsynchService" targetNamespace="http://service.orgsynch.documentum.croc.com/OrgsynchService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://service.orgsynch.documentum.croc.com/OrgsynchService/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd1="http://types.service.orgsynch.documentum.croc.com">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://service.orgsynch.documentum.wsdl.com/OrgsynchService/">
+      <xsd:element name="UpdateEmployee">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="in" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UpdateDepartment">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="in" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import namespace="http://types.service.orgsynch.documentum.croc.com" schemaLocation="xsd/Employee.xsd"></xsd:import>
+      <xsd:import namespace="http://types.service.orgsynch.documentum.croc.com" schemaLocation="xsd/Orgstructure.xsd"></xsd:import>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="UpdateEmployeeRequest">
+    <wsdl:part name="parameters" element="xsd1:Employee_DCTM_Request_MT"/>
+  </wsdl:message>
+  <wsdl:message name="UpdateDepartmentRequest">
+    <wsdl:part name="parameters" element="xsd1:OrgStructure_Request_MT"/>
+  </wsdl:message>
+  <wsdl:portType name="OrgsynchPortType">
+    <wsdl:operation name="UpdateEmployee">
+      <wsdl:input message="tns:UpdateEmployeeRequest"/>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDepartment">
+      <wsdl:input message="tns:UpdateDepartmentRequest"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="OrgsynchBinding" type="tns:OrgsynchPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="UpdateEmployee">
+      <soap:operation soapAction="urn:UpdateEmployee" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDepartment">
+      <soap:operation soapAction="urn:UpdateDepartment" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="OrgsynchService">
+    <wsdl:port name="HTTP_Port" binding="tns:OrgsynchBinding">
+      <soap:address location="http://service.orgsynch.documentum.wsdl.com/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>file:/home/tolya/dev/jaxws/wsdl/xsd/Employee.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://types.service.orgsynch.documentum.croc.com" elementFormDefault="unqualified" attributeFormDefault="unqualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="Employee_DCTM_Request_MT">
+    <xsd:annotation>
+      <xsd:documentation>Сообщение с информацией по одному сотруднику</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:annotation>
+        <xsd:documentation xml:lang="RU">Справочник персонала</xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+        <xsd:element name="row">
+          <xsd:annotation>
+            <xsd:documentation>Информация по сотруднику</xsd:documentation>
+          </xsd:annotation>
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="Login">
+                <xsd:annotation>
+                  <xsd:documentation>Логин сотрудника из Active Directory</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="80"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="Domain">
+                <xsd:annotation>
+                  <xsd:documentation>Домен сотрудника из Active Directory</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="256"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="MDMID">
+                <xsd:annotation>
+                  <xsd:documentation>Идентификационный код в системе MDM</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="32"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="FKEY" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation>Koд в локальной системе.
+В АСУТД не обрабатывается.</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="ISDELETED" type="xsd:boolean">
+                <xsd:annotation>
+                  <xsd:documentation>Признак удаления записи.
+Статус записи.
+0 - активен;
+1 - Помечено к удалению.</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="KontL_MDM" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation>ID руководителя для секретарей, помощников, советников.
+АСУТД не обрабатывается</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="KontL" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation>ID руководителя для секретарей, помощников, советников.
+АСУТД не обрабатывается</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="Ruk" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation>FKEY руководителя данного сотрудника.
+АСУТД не обрабатывается</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="TabelNumber" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation>Табельный номер</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="32"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="AdditionalNumber" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation>Дополнительный номер.
+В АСУТД не обрабатывается.</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="LastName">
+                <xsd:annotation>
+                  <xsd:documentation>Фамилия</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="256"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="FirstName">
+                <xsd:annotation>
+                  <xsd:documentation>Имя</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="256"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="MiddleName">
+                <xsd:annotation>
+                  <xsd:documentation>Отчество</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="256"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="DateBorn" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation>Дата рождения.
+В АСУТД не обрабатывается.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:pattern value="[0-9][0-9]/[0-9][0-9]/[0-9][0-9][0-9][0-9]"/>
+                    <xsd:pattern value="[0-9][0-9]:[0-9][0-9]:[0-9][0-9]"/>
+                    <xsd:pattern value="GMT"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="Address" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation>Адрес.
+В АСУТД не обрабатывается</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="OrgId_MDM" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation>Идентификатор MDM организационной единицы/
+В АСУТД не обрабатывается</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="OrgId" type="xsd:string">
+                <xsd:annotation>
+                  <xsd:documentation>Идентификатор MDM организационной единицы</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="OrgNameFull" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation>Полное нименование организации для Документума.
+АСУТД не обрабатывается</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="OrgIdFunk_MDM" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation>Идентификатор  MDM  функциональной организационной единицы.
+АСУТД не обрабатывается</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="OrgIdFunk" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation>Идентификатор  MDM  функциональной организационной единицы.
+АСУТД не обрабатывается</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="Dolg" type="xsd:string">
+                <xsd:annotation>
+                  <xsd:documentation>Название должности</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="ModificatorDolg" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation>Модификатор должности.
+АСУТД не обрабатывается</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="DolgFunk" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation>Название фунциональной должности.
+АСУТД не обрабатывается</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="ModificatorDolgFunc" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation>Модификатор фунциональной должности.
+АСУТД не обрабатывается</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="Address1_MDM" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation>FKEY из справочника мест расположения.
+АСУТД не обрабатывается</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="Address1" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation>FKEY из справочника мест расположения.
+АСУТД не обрабатывается</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="Office1" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation>Номер комнаты.
+АСУТД не обрабатывается</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="Address2_MDM" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation>FKEY из справочника мест расположения.
+АСУТД не обрабатывается</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="Address2" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation>FKEY из справочника мест расположения.
+АСУТД не обрабатывается</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="Office2" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation>Номер комнаты.
+АСУТД не обрабатывается</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="Address3_MDM" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation>FKEY из справочника мест расположения.
+АСУТД не обрабатывается</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="Address3" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation>FKEY из справочника мест расположения.
+АСУТД не обрабатывается</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="Office3" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation>Номер комнаты.
+АСУТД не обрабатывается</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="PhoneOrg1" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation>Телефон рабочий 1</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="PhoneOrg2" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation>Телефон рабочий 2.
+АСУТД не обрабатывается</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="PhoneOrg3" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation>Телефон рабочий 3.
+АСУТД не обрабатывается</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="PhoneHome1" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation>Телефон домашний 1.
+АСУТД не обрабатывается</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="PhoneHome2" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation>Телефон домашний 2.
+АСУТД не обрабатывается</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="PhoneHome3" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation>Телефон домашний 3.
+АСУТД не обрабатывается</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="PhoneMobile1" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation>Телефон мобильный 1.
+АСУТД не обрабатывается</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="PhoneMobile2" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation>Телефон мобильный 2.
+АСУТД не обрабатывается</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="PhoneMobile3" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation>Телефон мобильный 3.
+АСУТД не обрабатывается</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="Fax1" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation>Факс1.
+АСУТД не обрабатывается</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="Fax2" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation>Факс2.
+АСУТД не обрабатывается</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="Fax3" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation>Факс3.
+АСУТД не обрабатывается</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="PhoneInt1" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation>Внутренний телефон 1.
+АСУТД не обрабатывается</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="PhoneInt2" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation>Внутренний телефон 2.
+АСУТД не обрабатывается</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="PhoneInt3" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation>Внутренний телефон 3.
+АСУТД не обрабатывается</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="EMail" type="xsd:string" minOccurs="1">
+                <xsd:annotation>
+                  <xsd:documentation>E-mail</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="Activity" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation>Направление детельности.
+АСУТД не обрабатывается.</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="JobFunkPriority" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation>Приоритет функциональной должности.
+АСУТД не обрабатывается</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="JobPrioirity" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation>Приоритет должности.
+АСУТД не обрабатывается</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:/home/tolya/dev/jaxws/wsdl/xsd/Orgstructure.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://types.service.orgsynch.documentum.croc.com" elementFormDefault="unqualified" attributeFormDefault="unqualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="OrgStructure_Request_MT">
+    <xsd:annotation>
+      <xsd:documentation>Сообщение с инфоармцией по одному подразделению</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:annotation>
+        <xsd:appinfo source="http://sap.com/xi/TextID">1e9f4923590411dfc4c900145e741c7a</xsd:appinfo>
+      </xsd:annotation>
+      <xsd:sequence>
+        <xsd:element name="row">
+          <xsd:annotation>
+            <xsd:appinfo source="http://sap.com/xi/TextID">4657ad508fa111dc8fa8001a92c0d02d</xsd:appinfo>
+            <xsd:documentation>Информация по подразделению</xsd:documentation>
+          </xsd:annotation>
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="MDMID" minOccurs="1">
+                <xsd:annotation>
+                  <xsd:appinfo source="http://sap.com/xi/TextID">4657ad518fa111dcc267001a92c0d02d</xsd:appinfo>
+                  <xsd:documentation xml:lang="RU">Идентификационный код в системе MDM</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="32"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="FKEY" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:appinfo source="http://sap.com/xi/TextID">4657ad528fa111dcbe1f001a92c0d02d</xsd:appinfo>
+                  <xsd:documentation xml:lang="RU">Koд в локальной системе. Не обрабатывается в АСУТД</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="Ruk_MDM" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation>Руководитель подразделения.
+Содержит код MDM справочника сотрудников.
+Не обрабатывается в АСУТД</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="32"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="Ruk" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:appinfo source="http://sap.com/xi/TextID">03cdb310914b11dd8f42000ea647ac15</xsd:appinfo>
+                  <xsd:documentation xml:lang="RU">Руководитель подразделения.
+Содержит код MDM справочника сотрудников</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="32"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="CodeUpPodr" minOccurs="1">
+                <xsd:annotation>
+                  <xsd:appinfo source="http://sap.com/xi/TextID">4657ad538fa111dc85fd001a92c0d02d</xsd:appinfo>
+                  <xsd:documentation xml:lang="RU">Код вышестоящего подразделения</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="32"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="NameFull" minOccurs="1">
+                <xsd:annotation>
+                  <xsd:appinfo source="http://sap.com/xi/TextID">4657ad548fa111dcb6a5001a92c0d02d</xsd:appinfo>
+                  <xsd:documentation xml:lang="RU">Полное наименование подразделения</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="256"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="NameShort" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:appinfo source="http://sap.com/xi/TextID">4657ad558fa111dccd81001a92c0d02d</xsd:appinfo>
+                  <xsd:documentation xml:lang="RU">Краткое наименование подразделения</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="256"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="TypePodr" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:appinfo source="http://sap.com/xi/TextID">4657ad568fa111dc96b1001a92c0d02d</xsd:appinfo>
+                  <xsd:documentation xml:lang="RU">Наименование типа подразделения.
+Не обрабатывается в АСУТД</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="VidPodr" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:appinfo source="http://sap.com/xi/TextID">4657ad578fa111dc994d001a92c0d02d</xsd:appinfo>
+                  <xsd:documentation xml:lang="RU">Наименование вида подразделения.
+Не обрабатывается в АСУТД</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="Status" type="xsd:string" minOccurs="1">
+                <xsd:annotation>
+                  <xsd:appinfo source="http://sap.com/xi/TextID">4657ad5b8fa111dcab9b001a92c0d02d</xsd:appinfo>
+                  <xsd:documentation>Счтатус записи.
+0 - активен;
+1 - Помечено к удалению</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="OrganizationUnitID" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation xml:lang="RU">Идентификатор элемента организационно-штатной структуры предприятия.
+Не обрабатывается в АСУТД</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="TechnicalInfo_ModificationDateTime" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation xml:lang="RU">Дата модификации (DD/MM/YYYY HH:MM:SS).
+Не обрабатывается в АСУТД</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:dateTime">
+                    <xsd:pattern value="[0-9]{2}/[0-9]{2}/[0-9]{4} [0-9]{2}:[0-9]{2}:[0-9]{2}"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/jaxws/services/OrgsynchPortType</con:endpoint></con:endpoints><con:operation isOneWay="false" action="urn:UpdateDepartment" name="UpdateDepartment" bindingOperationName="UpdateDepartment" type="One-Way" inputName="" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/jaxws/services/OrgsynchPortType</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:typ="http://types.service.orgsynch.documentum.croc.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <typ:OrgStructure_Request_MT>
+         <row>
+            <MDMID>?</MDMID>
+            <!--Optional:-->
+            <FKEY>?</FKEY>
+            <!--Optional:-->
+            <Ruk_MDM>?</Ruk_MDM>
+            <!--Optional:-->
+            <Ruk>?</Ruk>
+            <CodeUpPodr>?</CodeUpPodr>
+            <NameFull>?</NameFull>
+            <!--Optional:-->
+            <NameShort>?</NameShort>
+            <!--Optional:-->
+            <TypePodr>?</TypePodr>
+            <!--Optional:-->
+            <VidPodr>?</VidPodr>
+            <Status>?</Status>
+            <!--Optional:-->
+            <OrganizationUnitID>?</OrganizationUnitID>
+            <!--Optional:-->
+            <TechnicalInfo_ModificationDateTime>?</TechnicalInfo_ModificationDateTime>
+         </row>
+      </typ:OrgStructure_Request_MT>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:UpdateDepartment"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="urn:UpdateEmployee" name="UpdateEmployee" bindingOperationName="UpdateEmployee" type="One-Way" inputName="" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/jaxws/services/OrgsynchPortType</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:typ="http://types.service.orgsynch.documentum.croc.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <typ:Employee_DCTM_Request_MT>
+         <row>
+            <Login>?</Login>
+            <Domain>?</Domain>
+            <MDMID>?</MDMID>
+            <!--Optional:-->
+            <FKEY>KEY</FKEY>
+            <ISDELETED>?</ISDELETED>
+            <!--Optional:-->
+            <KontL_MDM>?</KontL_MDM>
+            <!--Optional:-->
+            <KontL>?</KontL>
+            <!--Optional:-->
+            <Ruk>?</Ruk>
+            <!--Optional:-->
+            <TabelNumber>?</TabelNumber>
+            <!--Optional:-->
+            <AdditionalNumber>?</AdditionalNumber>
+            <LastName>?</LastName>
+            <FirstName>?</FirstName>
+            <MiddleName>?</MiddleName>
+            <!--Optional:-->
+            <DateBorn>?</DateBorn>
+            <!--Optional:-->
+            <Address>?</Address>
+            <!--Optional:-->
+            <OrgId_MDM>?</OrgId_MDM>
+            <OrgId>?</OrgId>
+            <!--Optional:-->
+            <OrgNameFull>?</OrgNameFull>
+            <!--Optional:-->
+            <OrgIdFunk_MDM>?</OrgIdFunk_MDM>
+            <!--Optional:-->
+            <OrgIdFunk>?</OrgIdFunk>
+            <Dolg>?</Dolg>
+            <!--Optional:-->
+            <ModificatorDolg>?</ModificatorDolg>
+            <!--Optional:-->
+            <DolgFunk>?</DolgFunk>
+            <!--Optional:-->
+            <ModificatorDolgFunc>?</ModificatorDolgFunc>
+            <!--Optional:-->
+            <Address1_MDM>?</Address1_MDM>
+            <!--Optional:-->
+            <Address1>?</Address1>
+            <!--Optional:-->
+            <Office1>?</Office1>
+            <!--Optional:-->
+            <Address2_MDM>?</Address2_MDM>
+            <!--Optional:-->
+            <Address2>?</Address2>
+            <!--Optional:-->
+            <Office2>?</Office2>
+            <!--Optional:-->
+            <Address3_MDM>?</Address3_MDM>
+            <!--Optional:-->
+            <Address3>?</Address3>
+            <!--Optional:-->
+            <Office3>?</Office3>
+            <!--Optional:-->
+            <PhoneOrg1>?</PhoneOrg1>
+            <!--Optional:-->
+            <PhoneOrg2>?</PhoneOrg2>
+            <!--Optional:-->
+            <PhoneOrg3>?</PhoneOrg3>
+            <!--Optional:-->
+            <PhoneHome1>?</PhoneHome1>
+            <!--Optional:-->
+            <PhoneHome2>?</PhoneHome2>
+            <!--Optional:-->
+            <PhoneHome3>?</PhoneHome3>
+            <!--Optional:-->
+            <PhoneMobile1>?</PhoneMobile1>
+            <!--Optional:-->
+            <PhoneMobile2>?</PhoneMobile2>
+            <!--Optional:-->
+            <PhoneMobile3>?</PhoneMobile3>
+            <!--Optional:-->
+            <Fax1>?</Fax1>
+            <!--Optional:-->
+            <Fax2>?</Fax2>
+            <!--Optional:-->
+            <Fax3>?</Fax3>
+            <!--Optional:-->
+            <PhoneInt1>?</PhoneInt1>
+            <!--Optional:-->
+            <PhoneInt2>?</PhoneInt2>
+            <!--Optional:-->
+            <PhoneInt3>?</PhoneInt3>
+            <EMail>?</EMail>
+            <!--Optional:-->
+            <Activity>?</Activity>
+            <!--Optional:-->
+            <JobFunkPriority>?</JobFunkPriority>
+            <!--Optional:-->
+            <JobPrioirity>?</JobPrioirity>
+         </row>
+      </typ:Employee_DCTM_Request_MT>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:UpdateEmployee"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite name="OrgsynchBinding TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="UpdateDepartment TestCase" searchProperties="true"><con:settings/><con:testStep type="request" name="UpdateDepartment"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>OrgsynchBinding</con:interface><con:operation>UpdateDepartment</con:operation><con:request name="UpdateDepartment"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/jaxws/services/OrgsynchPortType</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:typ="http://types.service.orgsynch.documentum.croc.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <typ:OrgStructure_Request_MT>
+         <row>
+            <MDMID>?</MDMID>
+            <!--Optional:-->
+            <FKEY>?</FKEY>
+            <!--Optional:-->
+            <Ruk_MDM>?</Ruk_MDM>
+            <!--Optional:-->
+            <Ruk>?</Ruk>
+            <CodeUpPodr>?</CodeUpPodr>
+            <NameFull>?</NameFull>
+            <!--Optional:-->
+            <NameShort>?</NameShort>
+            <!--Optional:-->
+            <TypePodr>?</TypePodr>
+            <!--Optional:-->
+            <VidPodr>?</VidPodr>
+            <Status>?</Status>
+            <!--Optional:-->
+            <OrganizationUnitID>?</OrganizationUnitID>
+            <!--Optional:-->
+            <TechnicalInfo_ModificationDateTime>?</TechnicalInfo_ModificationDateTime>
+         </row>
+      </typ:OrgStructure_Request_MT>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:wsaConfig action="urn:UpdateDepartment"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="UpdateEmployee TestCase" searchProperties="true"><con:settings/><con:testStep type="request" name="UpdateEmployee"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>OrgsynchBinding</con:interface><con:operation>UpdateEmployee</con:operation><con:request name="UpdateEmployee"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/jaxws/services/OrgsynchPortType</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:typ="http://types.service.orgsynch.documentum.croc.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <typ:Employee_DCTM_Request_MT>
+         <row>
+            <Login>?</Login>
+            <Domain>?</Domain>
+            <MDMID>?</MDMID>
+            <!--Optional:-->
+            <FKEY>?</FKEY>
+            <ISDELETED>?</ISDELETED>
+            <!--Optional:-->
+            <KontL_MDM>?</KontL_MDM>
+            <!--Optional:-->
+            <KontL>?</KontL>
+            <!--Optional:-->
+            <Ruk>?</Ruk>
+            <!--Optional:-->
+            <TabelNumber>?</TabelNumber>
+            <!--Optional:-->
+            <AdditionalNumber>?</AdditionalNumber>
+            <LastName>?</LastName>
+            <FirstName>?</FirstName>
+            <MiddleName>?</MiddleName>
+            <!--Optional:-->
+            <DateBorn>?</DateBorn>
+            <!--Optional:-->
+            <Address>?</Address>
+            <!--Optional:-->
+            <OrgId_MDM>?</OrgId_MDM>
+            <OrgId>?</OrgId>
+            <!--Optional:-->
+            <OrgNameFull>?</OrgNameFull>
+            <!--Optional:-->
+            <OrgIdFunk_MDM>?</OrgIdFunk_MDM>
+            <!--Optional:-->
+            <OrgIdFunk>?</OrgIdFunk>
+            <Dolg>?</Dolg>
+            <!--Optional:-->
+            <ModificatorDolg>?</ModificatorDolg>
+            <!--Optional:-->
+            <DolgFunk>?</DolgFunk>
+            <!--Optional:-->
+            <ModificatorDolgFunc>?</ModificatorDolgFunc>
+            <!--Optional:-->
+            <Address1_MDM>?</Address1_MDM>
+            <!--Optional:-->
+            <Address1>?</Address1>
+            <!--Optional:-->
+            <Office1>?</Office1>
+            <!--Optional:-->
+            <Address2_MDM>?</Address2_MDM>
+            <!--Optional:-->
+            <Address2>?</Address2>
+            <!--Optional:-->
+            <Office2>?</Office2>
+            <!--Optional:-->
+            <Address3_MDM>?</Address3_MDM>
+            <!--Optional:-->
+            <Address3>?</Address3>
+            <!--Optional:-->
+            <Office3>?</Office3>
+            <!--Optional:-->
+            <PhoneOrg1>?</PhoneOrg1>
+            <!--Optional:-->
+            <PhoneOrg2>?</PhoneOrg2>
+            <!--Optional:-->
+            <PhoneOrg3>?</PhoneOrg3>
+            <!--Optional:-->
+            <PhoneHome1>?</PhoneHome1>
+            <!--Optional:-->
+            <PhoneHome2>?</PhoneHome2>
+            <!--Optional:-->
+            <PhoneHome3>?</PhoneHome3>
+            <!--Optional:-->
+            <PhoneMobile1>?</PhoneMobile1>
+            <!--Optional:-->
+            <PhoneMobile2>?</PhoneMobile2>
+            <!--Optional:-->
+            <PhoneMobile3>?</PhoneMobile3>
+            <!--Optional:-->
+            <Fax1>?</Fax1>
+            <!--Optional:-->
+            <Fax2>?</Fax2>
+            <!--Optional:-->
+            <Fax3>?</Fax3>
+            <!--Optional:-->
+            <PhoneInt1>?</PhoneInt1>
+            <!--Optional:-->
+            <PhoneInt2>?</PhoneInt2>
+            <!--Optional:-->
+            <PhoneInt3>?</PhoneInt3>
+            <EMail>?</EMail>
+            <!--Optional:-->
+            <Activity>?</Activity>
+            <!--Optional:-->
+            <JobFunkPriority>?</JobFunkPriority>
+            <!--Optional:-->
+            <JobPrioirity>?</JobPrioirity>
+         </row>
+      </typ:Employee_DCTM_Request_MT>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="urn:UpdateEmployee" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/></con:soapui-project>
