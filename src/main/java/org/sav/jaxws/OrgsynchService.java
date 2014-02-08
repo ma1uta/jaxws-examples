@@ -17,14 +17,14 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "OrgsynchService", targetNamespace = "http://service.orgsynch.documentum.croc.com/OrgsynchService/", wsdlLocation = "file:///home/tolya/dev/jaxws/wsdl/OrgsynchService.wsdl")
+@WebServiceClient(name = "OrgsynchService", targetNamespace = "http://localhost:8080/jaxws/services/OrgsynchPortType", wsdlLocation = "file:///home/tolya/dev/jaxws/wsdl/OrgsynchService.wsdl")
 public class OrgsynchService
     extends Service
 {
 
     private final static URL ORGSYNCHSERVICE_WSDL_LOCATION;
     private final static WebServiceException ORGSYNCHSERVICE_EXCEPTION;
-    private final static QName ORGSYNCHSERVICE_QNAME = new QName("http://service.orgsynch.documentum.croc.com/OrgsynchService/", "OrgsynchService");
+    private final static QName ORGSYNCHSERVICE_QNAME = new QName("http://localhost:8080/jaxws/services/OrgsynchPortType", "OrgsynchService");
 
     static {
         URL url = null;
@@ -69,7 +69,7 @@ public class OrgsynchService
      */
     @WebEndpoint(name = "HTTP_Port")
     public OrgsynchPortType getHTTPPort() {
-        return super.getPort(new QName("http://service.orgsynch.documentum.croc.com/OrgsynchService/", "HTTP_Port"), OrgsynchPortType.class);
+        return super.getPort(new QName("http://localhost:8080/jaxws/services/OrgsynchPortType", "HTTP_Port"), OrgsynchPortType.class);
     }
 
     /**
@@ -81,7 +81,7 @@ public class OrgsynchService
      */
     @WebEndpoint(name = "HTTP_Port")
     public OrgsynchPortType getHTTPPort(WebServiceFeature... features) {
-        return super.getPort(new QName("http://service.orgsynch.documentum.croc.com/OrgsynchService/", "HTTP_Port"), OrgsynchPortType.class, features);
+        return super.getPort(new QName("http://localhost:8080/jaxws/services/OrgsynchPortType", "HTTP_Port"), OrgsynchPortType.class, features);
     }
 
     private static URL __getWsdlLocation() {

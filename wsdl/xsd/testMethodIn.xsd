@@ -1,0 +1,26 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://localhost:8080/jaxws/services/OrgsynchPortType" elementFormDefault="unqualified"
+            attributeFormDefault="unqualified">
+    <xsd:element name="testMethodInMsg">
+        <xsd:annotation>
+            <xsd:documentation>тестовый метод</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:annotation>
+                <xsd:appinfo source="http://sap.com/xi/TextID">
+                    1e9f4923590411dfc4c900145e741b7a
+                </xsd:appinfo>
+            </xsd:annotation>
+            <xsd:sequence>
+                <xsd:element name="argument" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:appinfo source="http://sap.com/xi/TextID">
+                            4657ad508fa111dc8fa8001a92c0d02d
+                        </xsd:appinfo>
+                        <xsd:documentation>аргумент</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>

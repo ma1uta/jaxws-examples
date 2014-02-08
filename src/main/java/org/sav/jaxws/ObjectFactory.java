@@ -54,6 +54,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link TestMethodOutMsg }
+     * 
+     */
+    public TestMethodOutMsg createTestMethodOutMsg() {
+        return new TestMethodOutMsg();
+    }
+
+    /**
+     * Create an instance of {@link TestMethodIn }
+     * 
+     */
+    public TestMethodIn createTestMethodIn() {
+        return new TestMethodIn();
+    }
+
+    /**
      * Create an instance of {@link UpdateEmployee }
      * 
      */
@@ -67,6 +83,22 @@ public class ObjectFactory {
      */
     public EmployeeDCTMRequestMT.Row createEmployeeDCTMRequestMTRow() {
         return new EmployeeDCTMRequestMT.Row();
+    }
+
+    /**
+     * Create an instance of {@link TestMethodOut }
+     * 
+     */
+    public TestMethodOut createTestMethodOut() {
+        return new TestMethodOut();
+    }
+
+    /**
+     * Create an instance of {@link TestMethodInMsg }
+     * 
+     */
+    public TestMethodInMsg createTestMethodInMsg() {
+        return new TestMethodInMsg();
     }
 
     /**

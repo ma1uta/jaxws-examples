@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <wsdl:definitions
         xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
-        xmlns:tns="http://service.orgsynch.documentum.croc.com/OrgsynchService/"
+        xmlns:tns="http://localhost:8080/jaxws/services/OrgsynchPortType"
         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
         xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
-        xmlns:xsd1="http://types.service.orgsynch.documentum.croc.com"
+        xmlns:xsd1="http://localhost:8080/jaxws/services/OrgsynchPortType"
         name="OrgsynchService"
-        targetNamespace="http://service.orgsynch.documentum.croc.com/OrgsynchService/">
+        targetNamespace="http://localhost:8080/jaxws/services/OrgsynchPortType">
     <wsdl:types>
         <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-                    targetNamespace="http://service.orgsynch.documentum.wsdl.com/OrgsynchService/">
+                    targetNamespace="http://localhost:8080/jaxws/services/OrgsynchPortType">
             <xsd:element name="UpdateEmployee">
                 <xsd:complexType>
                     <xsd:sequence>
@@ -24,12 +24,32 @@
                     </xsd:sequence>
                 </xsd:complexType>
             </xsd:element>
+            <xsd:element name="testMethodIn">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="in" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="testMethodOut">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="out" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
         </xsd:schema>
         <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-            <xsd:import namespace="http://types.service.orgsynch.documentum.croc.com" schemaLocation="xsd/Employee.xsd">
+            <xsd:import namespace="http://localhost:8080/jaxws/services/OrgsynchPortType" schemaLocation="xsd/Employee.xsd">
             </xsd:import>
-            <xsd:import namespace="http://types.service.orgsynch.documentum.croc.com"
+            <xsd:import namespace="http://localhost:8080/jaxws/services/OrgsynchPortType"
                         schemaLocation="xsd/Orgstructure.xsd">
+            </xsd:import>
+            <xsd:import namespace="http://localhost:8080/jaxws/services/OrgsynchPortType"
+                        schemaLocation="xsd/testMethodIn.xsd">
+            </xsd:import>
+            <xsd:import namespace="http://localhost:8080/jaxws/services/OrgsynchPortType"
+                        schemaLocation="xsd/testMethodOut.xsd">
             </xsd:import>
         </xsd:schema>
     </wsdl:types>
@@ -43,12 +63,24 @@
         <wsdl:part name="parameters" element="xsd1:OrgStructure_Request_MT"/>
     </wsdl:message>
 
+    <wsdl:message name="testMethodIn">
+        <wsdl:part name="parameters" element="xsd1:testMethodInMsg"/>
+    </wsdl:message>
+
+    <wsdl:message name="testMethodOut">
+        <wsdl:part name="parameters" element="xsd1:testMethodOutMsg"/>
+    </wsdl:message>
+
     <wsdl:portType name="OrgsynchPortType">
         <wsdl:operation name="UpdateEmployee">
             <wsdl:input message="tns:UpdateEmployeeRequest"/>
         </wsdl:operation>
         <wsdl:operation name="UpdateDepartment">
             <wsdl:input message="tns:UpdateDepartmentRequest"/>
+        </wsdl:operation>
+        <wsdl:operation name="testMethod">
+            <wsdl:input message="tns:testMethodIn"/>
+            <wsdl:output message="tns:testMethodOut"/>
         </wsdl:operation>
     </wsdl:portType>
 
@@ -68,11 +100,21 @@
                 <soap:body use="literal"/>
             </wsdl:input>
         </wsdl:operation>
+
+        <wsdl:operation name="testMethod">
+            <soap:operation soapAction="urn:testMethod" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
     </wsdl:binding>
 
     <wsdl:service name="OrgsynchService">
         <wsdl:port name="HTTP_Port" binding="tns:OrgsynchBinding">
-            <soap:address location="http://service.orgsynch.documentum.wsdl.com/"/>
+            <soap:address location="http://localhost:8080/jaxws/services/OrgsynchPortType"/>
         </wsdl:port>
     </wsdl:service>
 </wsdl:definitions>

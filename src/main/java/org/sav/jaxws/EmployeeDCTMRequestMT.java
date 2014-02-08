@@ -146,7 +146,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "row"
 })
-@XmlRootElement(name = "Employee_DCTM_Request_MT", namespace = "http://types.service.orgsynch.documentum.croc.com")
+@XmlRootElement(name = "Employee_DCTM_Request_MT")
 public class EmployeeDCTMRequestMT {
 
     @XmlElement(required = true)

@@ -1,159 +1,174 @@
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://types.service.orgsynch.documentum.croc.com" elementFormDefault="unqualified" attributeFormDefault="unqualified">
-	<xsd:element name="OrgStructure_Request_MT">
-		<xsd:annotation>
-			<xsd:documentation>Сообщение с инфоармцией по одному подразделению</xsd:documentation>
-		</xsd:annotation>
-		<xsd:complexType>
-			<xsd:annotation>
-				<xsd:appinfo source="http://sap.com/xi/TextID">
-               1e9f4923590411dfc4c900145e741c7a
-               </xsd:appinfo>
-			</xsd:annotation>
-			<xsd:sequence>
-				<xsd:element name="row">
-					<xsd:annotation>
-						<xsd:appinfo source="http://sap.com/xi/TextID">
-                     4657ad508fa111dc8fa8001a92c0d02d
-                     </xsd:appinfo>
-						<xsd:documentation>Информация по подразделению</xsd:documentation>
-					</xsd:annotation>
-					<xsd:complexType>
-						<xsd:sequence>
-							<xsd:element name="MDMID" minOccurs="1">
-								<xsd:annotation>
-									<xsd:appinfo source="http://sap.com/xi/TextID">
-                              4657ad518fa111dcc267001a92c0d02d
-                              </xsd:appinfo>
-									<xsd:documentation xml:lang="RU">Идентификационный код в системе MDM</xsd:documentation>
-								</xsd:annotation>
-								<xsd:simpleType>
-									<xsd:restriction base="xsd:string">
-										<xsd:maxLength value="32"/>
-									</xsd:restriction>
-								</xsd:simpleType>
-							</xsd:element>
-							<xsd:element name="FKEY" type="xsd:string" minOccurs="0">
-								<xsd:annotation>
-									<xsd:appinfo source="http://sap.com/xi/TextID">
-                              4657ad528fa111dcbe1f001a92c0d02d
-                              </xsd:appinfo>
-									<xsd:documentation xml:lang="RU">Koд в локальной системе. Не обрабатывается в АСУТД</xsd:documentation>
-								</xsd:annotation>
-							</xsd:element>
-							<xsd:element name="Ruk_MDM" minOccurs="0">
-								<xsd:annotation>
-									<xsd:documentation>Руководитель подразделения.
-Содержит код MDM справочника сотрудников.
-Не обрабатывается в АСУТД</xsd:documentation>
-								</xsd:annotation>
-								<xsd:simpleType>
-									<xsd:restriction base="xsd:string">
-										<xsd:maxLength value="32"/>
-									</xsd:restriction>
-								</xsd:simpleType>
-							</xsd:element>
-							<xsd:element name="Ruk" minOccurs="0">
-								<xsd:annotation>
-									<xsd:appinfo source="http://sap.com/xi/TextID">
-                              03cdb310914b11dd8f42000ea647ac15
-                              </xsd:appinfo>
-									<xsd:documentation xml:lang="RU">Руководитель подразделения.
-Содержит код MDM справочника сотрудников</xsd:documentation>
-								</xsd:annotation>
-								<xsd:simpleType>
-									<xsd:restriction base="xsd:string">
-										<xsd:maxLength value="32"/>
-									</xsd:restriction>
-								</xsd:simpleType>
-							</xsd:element>
-							<xsd:element name="CodeUpPodr" minOccurs="1">
-								<xsd:annotation>
-									<xsd:appinfo source="http://sap.com/xi/TextID">
-                              4657ad538fa111dc85fd001a92c0d02d
-                              </xsd:appinfo>
-									<xsd:documentation xml:lang="RU">Код вышестоящего подразделения</xsd:documentation>
-								</xsd:annotation>
-								<xsd:simpleType>
-									<xsd:restriction base="xsd:string">
-										<xsd:maxLength value="32"/>
-									</xsd:restriction>
-								</xsd:simpleType>
-							</xsd:element>
-							<xsd:element name="NameFull" minOccurs="1">
-								<xsd:annotation>
-									<xsd:appinfo source="http://sap.com/xi/TextID">
-                              4657ad548fa111dcb6a5001a92c0d02d
-                              </xsd:appinfo>
-									<xsd:documentation xml:lang="RU">Полное наименование подразделения</xsd:documentation>
-								</xsd:annotation>
-								<xsd:simpleType>
-									<xsd:restriction base="xsd:string">
-										<xsd:maxLength value="256"/>
-									</xsd:restriction>
-								</xsd:simpleType>
-							</xsd:element>
-							<xsd:element name="NameShort" minOccurs="0">
-								<xsd:annotation>
-									<xsd:appinfo source="http://sap.com/xi/TextID">
-                              4657ad558fa111dccd81001a92c0d02d
-                              </xsd:appinfo>
-									<xsd:documentation xml:lang="RU">Краткое наименование подразделения</xsd:documentation>
-								</xsd:annotation>
-								<xsd:simpleType>
-									<xsd:restriction base="xsd:string">
-										<xsd:maxLength value="256"/>
-									</xsd:restriction>
-								</xsd:simpleType>
-							</xsd:element>
-							<xsd:element name="TypePodr" type="xsd:string" minOccurs="0">
-								<xsd:annotation>
-									<xsd:appinfo source="http://sap.com/xi/TextID">
-                              4657ad568fa111dc96b1001a92c0d02d
-                              </xsd:appinfo>
-									<xsd:documentation xml:lang="RU">Наименование типа подразделения.
-Не обрабатывается в АСУТД                              </xsd:documentation>
-								</xsd:annotation>
-							</xsd:element>
-							<xsd:element name="VidPodr" type="xsd:string" minOccurs="0">
-								<xsd:annotation>
-									<xsd:appinfo source="http://sap.com/xi/TextID">
-                              4657ad578fa111dc994d001a92c0d02d
-                              </xsd:appinfo>
-									<xsd:documentation xml:lang="RU">Наименование вида подразделения.
-Не обрабатывается в АСУТД</xsd:documentation>
-								</xsd:annotation>
-							</xsd:element>
-							<xsd:element name="Status" type="xsd:string" minOccurs="1">
-								<xsd:annotation>
-									<xsd:appinfo source="http://sap.com/xi/TextID">
-                              4657ad5b8fa111dcab9b001a92c0d02d
-                              </xsd:appinfo>
-									<xsd:documentation>Счтатус записи.
-0 - активен;
-1 - Помечено к удалению</xsd:documentation>
-								</xsd:annotation>
-							</xsd:element>
-							<xsd:element name="OrganizationUnitID" type="xsd:string" minOccurs="0">
-								<xsd:annotation>
-									<xsd:documentation xml:lang="RU">Идентификатор элемента организационно-штатной структуры предприятия.
-Не обрабатывается в АСУТД                              </xsd:documentation>
-								</xsd:annotation>
-							</xsd:element>
-							<xsd:element name="TechnicalInfo_ModificationDateTime" minOccurs="0">
-								<xsd:annotation>
-									<xsd:documentation xml:lang="RU">Дата модификации (DD/MM/YYYY HH:MM:SS).
-Не обрабатывается в АСУТД</xsd:documentation>
-								</xsd:annotation>
-								<xsd:simpleType>
-									<xsd:restriction base="xsd:dateTime">
-										<xsd:pattern value="[0-9]{2}/[0-9]{2}/[0-9]{4} [0-9]{2}:[0-9]{2}:[0-9]{2}"/>
-									</xsd:restriction>
-								</xsd:simpleType>
-							</xsd:element>
-						</xsd:sequence>
-					</xsd:complexType>
-				</xsd:element>
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://localhost:8080/jaxws/services/OrgsynchPortType" elementFormDefault="unqualified"
+            attributeFormDefault="unqualified">
+    <xsd:element name="OrgStructure_Request_MT">
+        <xsd:annotation>
+            <xsd:documentation>Сообщение с инфоармцией по одному подразделению</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:annotation>
+                <xsd:appinfo source="http://sap.com/xi/TextID">
+                    1e9f4923590411dfc4c900145e741c7a
+                </xsd:appinfo>
+            </xsd:annotation>
+            <xsd:sequence>
+                <xsd:element name="row">
+                    <xsd:annotation>
+                        <xsd:appinfo source="http://sap.com/xi/TextID">
+                            4657ad508fa111dc8fa8001a92c0d02d
+                        </xsd:appinfo>
+                        <xsd:documentation>Информация по подразделению</xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="MDMID" minOccurs="1">
+                                <xsd:annotation>
+                                    <xsd:appinfo source="http://sap.com/xi/TextID">
+                                        4657ad518fa111dcc267001a92c0d02d
+                                    </xsd:appinfo>
+                                    <xsd:documentation xml:lang="RU">Идентификационный код в системе MDM
+                                    </xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:simpleType>
+                                    <xsd:restriction base="xsd:string">
+                                        <xsd:maxLength value="32"/>
+                                    </xsd:restriction>
+                                </xsd:simpleType>
+                            </xsd:element>
+                            <xsd:element name="FKEY" type="xsd:string" minOccurs="0">
+                                <xsd:annotation>
+                                    <xsd:appinfo source="http://sap.com/xi/TextID">
+                                        4657ad528fa111dcbe1f001a92c0d02d
+                                    </xsd:appinfo>
+                                    <xsd:documentation xml:lang="RU">Koд в локальной системе. Не обрабатывается в
+                                        АСУТД
+                                    </xsd:documentation>
+                                </xsd:annotation>
+                            </xsd:element>
+                            <xsd:element name="Ruk_MDM" minOccurs="0">
+                                <xsd:annotation>
+                                    <xsd:documentation>Руководитель подразделения.
+                                        Содержит код MDM справочника сотрудников.
+                                        Не обрабатывается в АСУТД
+                                    </xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:simpleType>
+                                    <xsd:restriction base="xsd:string">
+                                        <xsd:maxLength value="32"/>
+                                    </xsd:restriction>
+                                </xsd:simpleType>
+                            </xsd:element>
+                            <xsd:element name="Ruk" minOccurs="0">
+                                <xsd:annotation>
+                                    <xsd:appinfo source="http://sap.com/xi/TextID">
+                                        03cdb310914b11dd8f42000ea647ac15
+                                    </xsd:appinfo>
+                                    <xsd:documentation xml:lang="RU">Руководитель подразделения.
+                                        Содержит код MDM справочника сотрудников
+                                    </xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:simpleType>
+                                    <xsd:restriction base="xsd:string">
+                                        <xsd:maxLength value="32"/>
+                                    </xsd:restriction>
+                                </xsd:simpleType>
+                            </xsd:element>
+                            <xsd:element name="CodeUpPodr" minOccurs="1">
+                                <xsd:annotation>
+                                    <xsd:appinfo source="http://sap.com/xi/TextID">
+                                        4657ad538fa111dc85fd001a92c0d02d
+                                    </xsd:appinfo>
+                                    <xsd:documentation xml:lang="RU">Код вышестоящего подразделения</xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:simpleType>
+                                    <xsd:restriction base="xsd:string">
+                                        <xsd:maxLength value="32"/>
+                                    </xsd:restriction>
+                                </xsd:simpleType>
+                            </xsd:element>
+                            <xsd:element name="NameFull" minOccurs="1">
+                                <xsd:annotation>
+                                    <xsd:appinfo source="http://sap.com/xi/TextID">
+                                        4657ad548fa111dcb6a5001a92c0d02d
+                                    </xsd:appinfo>
+                                    <xsd:documentation xml:lang="RU">Полное наименование подразделения
+                                    </xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:simpleType>
+                                    <xsd:restriction base="xsd:string">
+                                        <xsd:maxLength value="256"/>
+                                    </xsd:restriction>
+                                </xsd:simpleType>
+                            </xsd:element>
+                            <xsd:element name="NameShort" minOccurs="0">
+                                <xsd:annotation>
+                                    <xsd:appinfo source="http://sap.com/xi/TextID">
+                                        4657ad558fa111dccd81001a92c0d02d
+                                    </xsd:appinfo>
+                                    <xsd:documentation xml:lang="RU">Краткое наименование подразделения
+                                    </xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:simpleType>
+                                    <xsd:restriction base="xsd:string">
+                                        <xsd:maxLength value="256"/>
+                                    </xsd:restriction>
+                                </xsd:simpleType>
+                            </xsd:element>
+                            <xsd:element name="TypePodr" type="xsd:string" minOccurs="0">
+                                <xsd:annotation>
+                                    <xsd:appinfo source="http://sap.com/xi/TextID">
+                                        4657ad568fa111dc96b1001a92c0d02d
+                                    </xsd:appinfo>
+                                    <xsd:documentation xml:lang="RU">Наименование типа подразделения.
+                                        Не обрабатывается в АСУТД
+                                    </xsd:documentation>
+                                </xsd:annotation>
+                            </xsd:element>
+                            <xsd:element name="VidPodr" type="xsd:string" minOccurs="0">
+                                <xsd:annotation>
+                                    <xsd:appinfo source="http://sap.com/xi/TextID">
+                                        4657ad578fa111dc994d001a92c0d02d
+                                    </xsd:appinfo>
+                                    <xsd:documentation xml:lang="RU">Наименование вида подразделения.
+                                        Не обрабатывается в АСУТД
+                                    </xsd:documentation>
+                                </xsd:annotation>
+                            </xsd:element>
+                            <xsd:element name="Status" type="xsd:string" minOccurs="1">
+                                <xsd:annotation>
+                                    <xsd:appinfo source="http://sap.com/xi/TextID">
+                                        4657ad5b8fa111dcab9b001a92c0d02d
+                                    </xsd:appinfo>
+                                    <xsd:documentation>Счтатус записи.
+                                        0 - активен;
+                                        1 - Помечено к удалению
+                                    </xsd:documentation>
+                                </xsd:annotation>
+                            </xsd:element>
+                            <xsd:element name="OrganizationUnitID" type="xsd:string" minOccurs="0">
+                                <xsd:annotation>
+                                    <xsd:documentation xml:lang="RU">Идентификатор элемента организационно-штатной
+                                        структуры предприятия.
+                                        Не обрабатывается в АСУТД
+                                    </xsd:documentation>
+                                </xsd:annotation>
+                            </xsd:element>
+                            <xsd:element name="TechnicalInfo_ModificationDateTime" minOccurs="0">
+                                <xsd:annotation>
+                                    <xsd:documentation xml:lang="RU">Дата модификации (DD/MM/YYYY HH:MM:SS).
+                                        Не обрабатывается в АСУТД
+                                    </xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:simpleType>
+                                    <xsd:restriction base="xsd:dateTime">
+                                        <xsd:pattern value="[0-9]{2}/[0-9]{2}/[0-9]{4} [0-9]{2}:[0-9]{2}:[0-9]{2}"/>
+                                    </xsd:restriction>
+                                </xsd:simpleType>
+                            </xsd:element>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
 </xsd:schema>

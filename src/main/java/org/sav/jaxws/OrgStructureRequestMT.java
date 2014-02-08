@@ -95,7 +95,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlType(name = "", propOrder = {
     "row"
 })
-@XmlRootElement(name = "OrgStructure_Request_MT", namespace = "http://types.service.orgsynch.documentum.croc.com")
+@XmlRootElement(name = "OrgStructure_Request_MT")
 public class OrgStructureRequestMT {
 
     @XmlElement(required = true)

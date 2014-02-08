@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://types.service.orgsynch.documentum.croc.com" elementFormDefault="unqualified" attributeFormDefault="unqualified">
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://localhost:8080/jaxws/services/OrgsynchPortType" elementFormDefault="unqualified" attributeFormDefault="unqualified">
 	<xsd:element name="Employee_DCTM_Request_MT">
 		<xsd:annotation>
 			<xsd:documentation>Сообщение с информацией по одному сотруднику</xsd:documentation>

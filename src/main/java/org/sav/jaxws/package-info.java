@@ -1,2 +1,2 @@
-@javax.xml.bind.annotation.XmlSchema(
-        namespace = "http://service.orgsynch.documentum.wsdl.com/OrgsynchService/") package org.sav.jaxws;
+@javax.xml.bind.annotation.XmlSchema(namespace = "http://localhost:8080/jaxws/services/OrgsynchPortType")
+package org.sav.jaxws;

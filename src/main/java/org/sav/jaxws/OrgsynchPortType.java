@@ -4,6 +4,7 @@ package org.sav.jaxws;
 import javax.jws.Oneway;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
+import javax.jws.WebResult;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 import javax.xml.bind.annotation.XmlSeeAlso;
@@ -15,7 +16,7 @@ import javax.xml.bind.annotation.XmlSeeAlso;
  * Generated source version: 2.2
  * 
  */
-@WebService(name = "OrgsynchPortType", targetNamespace = "http://service.orgsynch.documentum.croc.com/OrgsynchService/")
+@WebService(name = "OrgsynchPortType", targetNamespace = "http://localhost:8080/jaxws/services/OrgsynchPortType")
 @SOAPBinding(parameterStyle = SOAPBinding.ParameterStyle.BARE)
 @XmlSeeAlso({
     ObjectFactory.class
@@ -30,7 +31,7 @@ public interface OrgsynchPortType {
     @WebMethod(operationName = "UpdateEmployee", action = "urn:UpdateEmployee")
     @Oneway
     public void updateEmployee(
-        @WebParam(name = "Employee_DCTM_Request_MT", targetNamespace = "http://types.service.orgsynch.documentum.croc.com", partName = "parameters")
+        @WebParam(name = "Employee_DCTM_Request_MT", targetNamespace = "http://localhost:8080/jaxws/services/OrgsynchPortType", partName = "parameters")
         EmployeeDCTMRequestMT parameters);
 
     /**
@@ -40,7 +41,19 @@ public interface OrgsynchPortType {
     @WebMethod(operationName = "UpdateDepartment", action = "urn:UpdateDepartment")
     @Oneway
     public void updateDepartment(
-        @WebParam(name = "OrgStructure_Request_MT", targetNamespace = "http://types.service.orgsynch.documentum.croc.com", partName = "parameters")
+        @WebParam(name = "OrgStructure_Request_MT", targetNamespace = "http://localhost:8080/jaxws/services/OrgsynchPortType", partName = "parameters")
         OrgStructureRequestMT parameters);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns org.sav.jaxws.TestMethodOutMsg
+     */
+    @WebMethod(operationName = "testMethod", action = "urn:testMethod")
+    @WebResult(name = "testMethodOutMsg", targetNamespace = "http://localhost:8080/jaxws/services/OrgsynchPortType", partName = "parameters")
+    public TestMethodOutMsg testMethod(
+        @WebParam(name = "testMethodInMsg", targetNamespace = "http://localhost:8080/jaxws/services/OrgsynchPortType", partName = "parameters")
+        TestMethodInMsg parameters);
 
 }
