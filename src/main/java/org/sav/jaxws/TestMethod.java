@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="out" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="argument" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -29,36 +29,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "out"
+    "argument"
 })
-@XmlRootElement(name = "testMethodOut")
-public class TestMethodOut {
+@XmlRootElement(name = "testMethod")
+public class TestMethod {
 
     @XmlElement(required = true)
-    protected String out;
+    protected String argument;
 
     /**
-     * Gets the value of the out property.
+     * Gets the value of the argument property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getOut() {
-        return out;
+    public String getArgument() {
+        return argument;
     }
 
     /**
-     * Sets the value of the out property.
+     * Sets the value of the argument property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setOut(String value) {
-        this.out = value;
+    public void setArgument(String value) {
+        this.argument = value;
     }
 
 }

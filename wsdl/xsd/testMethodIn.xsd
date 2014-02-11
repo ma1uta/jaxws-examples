@@ -1,7 +1,7 @@
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-            targetNamespace="http://localhost:8080/jaxws/services/OrgsynchPortType" elementFormDefault="unqualified"
+            targetNamespace="http://localhost:8080/jaxws/services/OrgsynchService" elementFormDefault="unqualified"
             attributeFormDefault="unqualified">
-    <xsd:element name="testMethodInMsg">
+    <xsd:element name="testMethod">
         <xsd:annotation>
             <xsd:documentation>тестовый метод</xsd:documentation>
         </xsd:annotation>

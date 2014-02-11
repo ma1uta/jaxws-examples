@@ -10,8 +10,8 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * 
- *                Справочник персонала
- *                
+ *                     Справочник персонала
+ *                 
  * 
  * <p>Java class for anonymous complex type.
  * 

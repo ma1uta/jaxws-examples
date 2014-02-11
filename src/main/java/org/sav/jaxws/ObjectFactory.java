@@ -21,14 +21,6 @@ import javax.xml.bind.annotation.XmlRegistry;
 @XmlRegistry
 public class ObjectFactory {
 
-
-    /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: org.sav.jaxws
-     * 
-     */
-    public ObjectFactory() {
-    }
-
     /**
      * Create an instance of {@link EmployeeDCTMRequestMT }
      * 
@@ -46,35 +38,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link UpdateDepartment }
+     * Create an instance of {@link TestMethodResponse }
      * 
      */
-    public UpdateDepartment createUpdateDepartment() {
-        return new UpdateDepartment();
-    }
-
-    /**
-     * Create an instance of {@link TestMethodOutMsg }
-     * 
-     */
-    public TestMethodOutMsg createTestMethodOutMsg() {
-        return new TestMethodOutMsg();
-    }
-
-    /**
-     * Create an instance of {@link TestMethodIn }
-     * 
-     */
-    public TestMethodIn createTestMethodIn() {
-        return new TestMethodIn();
-    }
-
-    /**
-     * Create an instance of {@link UpdateEmployee }
-     * 
-     */
-    public UpdateEmployee createUpdateEmployee() {
-        return new UpdateEmployee();
+    public TestMethodResponse createTestMethodResponse() {
+        return new TestMethodResponse();
     }
 
     /**
@@ -86,19 +54,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TestMethodOut }
+     * Create an instance of {@link TestMethod }
      * 
      */
-    public TestMethodOut createTestMethodOut() {
-        return new TestMethodOut();
-    }
-
-    /**
-     * Create an instance of {@link TestMethodInMsg }
-     * 
-     */
-    public TestMethodInMsg createTestMethodInMsg() {
-        return new TestMethodInMsg();
+    public TestMethod createTestMethod() {
+        return new TestMethod();
     }
 
     /**
