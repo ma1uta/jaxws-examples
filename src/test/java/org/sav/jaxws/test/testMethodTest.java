@@ -28,9 +28,12 @@ public class testMethodTest {
         GlassFishRuntime runtime = GlassFishRuntime.bootstrap();
         glassFish = runtime.newGlassFish();
         glassFish.start();
-        glassFish.getCommandRunner().run("create-http-listener", "--listenerport", "8080",
+        glassFish.getCommandRunner().run("create-http-listener",
                                          "--listeneraddress", "localhost",
-                                         "--securityenabled", "false");
+                                         "--listenerport", "8080",
+                                         "--default-virtual-server", "server",
+                                         "--securityenabled", "false",
+                                         "listener0");
         deployedApp = glassFish.getDeployer()
                                .deploy(new File("target/jaxws.war").toURI(), "--contextroot=jaxws", "--force=true");
     }
