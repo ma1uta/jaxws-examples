@@ -7,7 +7,11 @@ import org.sav.jaxws.OrgsynchService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.jws.*;
+import javax.jws.HandlerChain;
+import javax.jws.Oneway;
+import javax.jws.WebMethod;
+import javax.jws.WebParam;
+import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.ws.Holder;

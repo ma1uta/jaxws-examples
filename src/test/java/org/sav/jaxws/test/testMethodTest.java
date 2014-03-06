@@ -4,6 +4,7 @@ import junit.framework.Assert;
 import org.glassfish.embeddable.GlassFish;
 import org.glassfish.embeddable.GlassFishException;
 import org.glassfish.embeddable.GlassFishRuntime;
+import org.glassfish.embeddable.archive.ScatteredArchive;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,6 +13,7 @@ import org.sav.jaxws.OrgsynchService_Service;
 
 import javax.xml.ws.Holder;
 import java.io.File;
+import java.io.IOException;
 
 /**
  * @author tolya
@@ -24,7 +26,7 @@ public class testMethodTest {
     protected String deployedApp;
 
     @Before
-    public void beforeTest() throws GlassFishException {
+    public void beforeTest() throws GlassFishException, IOException {
         GlassFishRuntime runtime = GlassFishRuntime.bootstrap();
         glassFish = runtime.newGlassFish();
         glassFish.start();
@@ -34,8 +36,11 @@ public class testMethodTest {
                                          "--default-virtual-server", "server",
                                          "--securityenabled", "false",
                                          "listener0");
-        deployedApp = glassFish.getDeployer()
-                               .deploy(new File("target/jaxws.war").toURI(), "--contextroot=jaxws", "--force=true");
+        ScatteredArchive archive = new ScatteredArchive("jaxws", ScatteredArchive.Type.WAR);
+        archive.addClassPath(new File("target/classes"));
+        archive.addMetadata(new File("src/main/webapp/WEB-INF", "web.xml"));
+        archive.addMetadata(new File("src/main/webapp/WEB-INF", "sun-jaxws.xml"));
+        deployedApp = glassFish.getDeployer().deploy(archive.toURI(), "--contextroot=jaxws", "--force=true");
     }
 
     @Test
